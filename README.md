@@ -1,4 +1,4 @@
-# Real-Time-Background-Replacement
+# Back-Off: Real Time Background Replacement
 A tool that takes video and replace with new background provided by user in real time.
 
 ## Table of contents
