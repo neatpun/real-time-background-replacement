@@ -7,6 +7,8 @@ from stuff.helper import FPS2, WebcamVideoStream
 from skimage import measure
 from random import randint
 
+img_num=0
+mike_flag=True
 
 def load_model():
     print('Loading model...')
@@ -20,6 +22,17 @@ def load_model():
     return detection_graph
 
 
+def next_bg(event, x, y, flags, param):
+    global mike_flag,img_num
+    if event == cv2.EVENT_LBUTTONUP:
+        mike_flag=not mike_flag
+    elif event == cv2.EVENT_RBUTTONUP:
+        img_num+=1
+
+
+
+
+
 def segmentation(detection_graph):
 
     vs = WebcamVideoStream(0, 640, 480).start()
@@ -31,19 +44,32 @@ def segmentation(detection_graph):
     config.gpu_options.allow_growth = True
     fps = FPS2(5).start()
 
-    fff = 0
+    filelist = [file for file in os.listdir(
+        'backgrounds') if file.endswith('.jpg')]
 
-    background_image = cv2.imread('b.jpg')
-    resized_background_image = cv2.resize(
-        background_image, target_size)  # (384,513)
+    num_files=len(filelist)
 
-    background_image2 = cv2.imread('b2.jpg')
-    resized_background_image2 = cv2.resize(
-        background_image2, target_size)  # (384,513)
+    background_image = []
+    resized_background_image=[]
+    for x in filelist:
+        background_image.append(cv2.imread(x))
+        resized_background_image.append(cv2.resize(
+            background_image[-1], target_size))
+        
 
-    background_image3 = cv2.imread('b3.jpg')
-    resized_background_image3 = cv2.resize(
-        background_image3, target_size)  # (384,513)
+    # fff = 0
+
+    # background_image = cv2.imread('b.jpg')
+    # resized_background_image = cv2.resize(
+    #     background_image, target_size)  # (384,513)
+
+    # background_image2 = cv2.imread('b2.jpg')
+    # resized_background_image2 = cv2.resize(
+    #     background_image2, target_size)  # (384,513)
+
+    # background_image3 = cv2.imread('b3.jpg')
+    # resized_background_image3 = cv2.resize(
+    #     background_image3, target_size)  # (384,513)
 
     mike_background_image = cv2.imread('mike.png')
     mike_background_image = cv2.resize(mike_background_image, (int(
@@ -54,6 +80,17 @@ def segmentation(detection_graph):
     # 'M', 'J', 'P', 'G'), 1, (vs.real_height, vs.real_width))#CHANGE
 
     print("Starting...")
+
+    cv2.namedWindow('segmentation',16)# 16 means WINDOW_GUI_NORMAL, to disable right click context menu
+
+    cv2.setMouseCallback('segmentation', next_bg)
+
+    global img_num,mike_flag
+    img_num=0
+    mike_flag=True
+
+
+
     with detection_graph.as_default():
         with tf.Session(graph=detection_graph) as sess:
             while vs.isActive():
@@ -64,12 +101,14 @@ def segmentation(detection_graph):
                 seg_map = batch_seg_map[0]
                 seg_map[seg_map != 15] = 0
 
-                if fff == 0:
-                    bg_copy = resized_background_image.copy()
-                elif fff == 1:
-                    bg_copy = resized_background_image2.copy()
-                elif fff == 2:
-                    bg_copy = resized_background_image3.copy()
+                bg_copy=resized_background_image[img_num%num_files].copy()
+
+                # if fff == 0:
+                #     bg_copy = resized_background_image.copy()
+                # elif fff == 1:
+                #     bg_copy = resized_background_image2.copy()
+                # elif fff == 2:
+                #     bg_copy = resized_background_image3.copy()
 
                 mask = (seg_map == 15)
                 bg_copy[mask] = image[mask]
@@ -89,7 +128,7 @@ def segmentation(detection_graph):
                 except:
                     pass
 
-                if fff == 0:
+                if mike_flag:
                     x_offset = 150
                     y_offset = 95
                     bg_copy[y_offset:y_offset+mike_background_image.shape[0], x_offset:x_offset+mike_background_image.shape[1]
