@@ -10,7 +10,7 @@ A tool that takes video and replace with new background provided by user in real
 
 
 ### Description
- Background removal helps with creative portrait photography and much more, helping provide the ability to change the background to a location of your choice. There are 3 methods available to use. One is a simple live-method using the webcam, a user can change the background by pressing and holding 'a', 'b', or 'c'. Other is live streaming from a mobile app. The last one is by requesting the server with pre-recorded video and background picture of choice.
+ Background removal helps with creative portrait photography and much more, helping provide the ability to change the background to a location of your choice. There are 4 methods available to use. One is a simple live-method using the webcam, a user can change the background by pressing and holding 'a', 'b', or 'c'. Other is live streaming from a mobile app. The last one is by requesting the server with pre-recorded video and background picture of choice. Fourth one is android app with a Flask server.
  
 ### Technologies Used
 - Tensorflow
