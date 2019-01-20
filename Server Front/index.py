@@ -39,6 +39,9 @@ graph = load_model()
 
 def segmentation(filename_fg, cv_type, filename_bg=None):
     detection_graph = graph
+    print(filename_fg)
+    print(cv_type)
+    print(filename_bg)
 
     if cv_type == "fg_video":
         vs = cv2.VideoCapture('uploads/' + filename_fg)
@@ -483,7 +486,19 @@ def plot():
     print(1.5)
 
     file_fg = request.files['file_fg']
-    cv_type = request.form.get('cv_type')
+
+    try:
+        cv_type = request.form.get('cv_type')
+    except:
+        cv_type='fg_video'
+    
+    if cv_type is None:
+        cv_type='fg_video'
+    
+
+    print(cv_type)
+
+
 
     print(2)
 
@@ -522,7 +537,8 @@ def plot():
 
     except:
         print("about to...")
+        filename_bg='assets/background.jpg'
 
-        segmentation(filename_fg, cv_type)
+        segmentation(filename_fg, cv_type,filename_bg)
 
         return send_file('outpy.avi')
