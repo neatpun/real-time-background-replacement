@@ -1,9 +1,10 @@
 # Real-Time-Background-Replacement
-A Tool that takes video and replace with new background provided by user
+A tool that takes video and replace with new background provided by user in real time.
 
 ## Table of contents
 - [Description](#description)
 - [Technologies used](#technologies-used)
+- [Results](#results)
 - [How it works](#how-it-works)
 - [Contributors](#contributors)
 
@@ -15,6 +16,11 @@ A Tool that takes video and replace with new background provided by user
 - Tensorflow
 - OpenCV
 - Flask
+
+### Results
+Input | Background | Result
+:-------:|:---------:|:---------:
+![input](https://drive.google.com/uc?id=13_bDk_G6u7Z2vZ4cMUqbmIU4j3bRVMX8) | ![background](https://drive.google.com/uc?id=1FpZqv_5Xt436K29Y5-ZAk_aOxC7Wdg29) | ![output](https://drive.google.com/uc?id=152GFmsJyxaOUjzUfMeEP7NbX5xYP5iIP)
 
 ### How It Works
 ```sh
