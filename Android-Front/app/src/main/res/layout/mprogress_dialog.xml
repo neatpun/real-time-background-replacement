@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_gravity="center"
+  android:background="@color/light_shadow">
+
+  <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+      android:id="@+id/title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:paddingTop="12dp"
+      android:paddingBottom="12dp"
+      android:paddingLeft="8dp"
+      android:paddingRight="8dp"
+      tools:text="Uploading 1 of 3"
+      android:textColor="@color/white"
+      android:textSize="14sp"
+      android:visibility="visible"/>
+
+    <ImageView
+      android:id="@+id/progress"
+      android:layout_width="60dp"
+      android:layout_height="60dp"
+      android:layout_gravity="center"/>
+  </LinearLayout>
+
+</FrameLayout>

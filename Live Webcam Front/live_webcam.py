@@ -138,11 +138,11 @@ def segmentation(detection_graph):
                 cv2.imshow('segmentation', ir)
                 if cv2.waitKey(1) & 0xFF == ord('q'):
                     break
-                elif cv2.waitKey(30) & 0xFF == ord('a'):
+                elif cv2.waitKey(1) & 0xFF == ord('a'):
                     fff = 0
-                elif cv2.waitKey(30) & 0xFF == ord('b'):
+                elif cv2.waitKey(1) & 0xFF == ord('b'):
                     fff = 1
-                elif cv2.waitKey(30) & 0xFF == ord('c'):
+                elif cv2.waitKey(1) & 0xFF == ord('c'):
                     fff = 2
                 fps.update()
 
