@@ -2,21 +2,21 @@
 A Tool that takes video and replace with new background provided by user
 
 ## Table of contents
-- [Description](https://github.com/neatpun/real-time-background-replacement/README.md#description)
-- [Technologies used](https://github.com/neatpun/real-time-background-replacement/README.md#technologies-used)
-- [How it works](https://github.com/neatpun/real-time-background-replacement/README.md#how-it-works)
-- [Contributors](https://github.com/neatpun/real-time-background-replacement/README.md#contributors)
+- [Description](#description)
+- [Technologies used](#technologies-used)
+- [How it works](#how-it-works)
+- [Contributors](#contributors)
 
 
 ### Description
  Background removal helps with creative portrait photography and much more, helping provide the ability to change the background to a location of your choice. There are 3 methods available to use. One is a simple live-method using the webcam, a user can change the background by pressing and holding 'a', 'b', or 'c'. Other is live streaming from a mobile app. The last one is by requesting the server with pre-recorded video and background picture of choice.
  
-### Technologies used
+### Technologies Used
 - Tensorflow
 - OpenCV
 - Flask
 
-### How it works
+### How It Works
 ```sh
 $ git clone https://github.com/neatpun/real-time-background-replacement
 ```
