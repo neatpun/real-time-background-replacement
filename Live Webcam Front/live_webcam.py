@@ -87,7 +87,7 @@ def segmentation(detection_graph):
 
     global img_num,mike_flag
     img_num=0
-    mike_flag=True
+    mike_flag=False
 
 
 
@@ -119,7 +119,7 @@ def segmentation(detection_graph):
                 gray = cv2.cvtColor(seg_image, cv2.COLOR_BGR2GRAY)
 
                 thresh = cv2.threshold(gray, 10, 255, cv2.THRESH_BINARY)[1]
-                cnts, hierarchy = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL,
+                _, cnts, hierarchy = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL,
                                                    cv2.CHAIN_APPROX_SIMPLE)
 
                 try:
