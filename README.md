@@ -1,3 +1,4 @@
+***Winning project for WittyHacks 2.0 (central India's largest hackathon). Created by [Prathamesh Naik](https://github.com/neatpun), [Raghav Mahajan](https://github.com/Raghav-intrigue) & [Mohit Nathrani](https://github.com/Mohit-Nathrani).***
 # Back-Off: Real Time Background Replacement
 A tool that takes video and replace with new background provided by user in real time.
 
@@ -20,7 +21,7 @@ A tool that takes video and replace with new background provided by user in real
 ### Results
 Input | Background | Result
 :-------:|:---------:|:---------:
-![input](https://drive.google.com/uc?id=13_bDk_G6u7Z2vZ4cMUqbmIU4j3bRVMX8) | ![background](https://drive.google.com/uc?id=1FpZqv_5Xt436K29Y5-ZAk_aOxC7Wdg29) | ![output](https://drive.google.com/uc?id=152GFmsJyxaOUjzUfMeEP7NbX5xYP5iIP)
+![input](images/a.jpg) | ![background](images/b.jpg) | ![output](images/c.jpg)
 
 ### How It Works
 ```sh
@@ -46,8 +47,3 @@ $ git clone https://github.com/neatpun/real-time-background-replacement
 * connect any mobile device to same network and stream video.
 * provide the ip address of mobile device in **IP_Webcam_Out.py**
 * ```python IP_Webcam_Out.py```
-
-### Contributors
-- [Mohit Nathrani](https://github.com/Mohit-Nathrani)
-- [Raghav Mahajan](https://github.com/Raghav-intrigue)
-- [Prathamesh Naik](https://github.com/neatpun)

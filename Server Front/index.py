@@ -14,6 +14,10 @@ from werkzeug.utils import secure_filename
 from flask import Flask, flash, request, redirect, url_for, send_file
 import numpy as np
 import tensorflow as tf
+v_tf = tf.__version__.split('.')[0]
+if v_tf == '2':
+    import tensorflow.compat.v1 as tf
+    tf.disable_v2_behavior()
 import imutils
 import os
 import cv2
@@ -125,7 +129,12 @@ def segmentation(filename_fg, cv_type, filename_bg=None):
                 gray = cv2.cvtColor(seg_image, cv2.COLOR_BGR2GRAY)
 
                 thresh = cv2.threshold(gray, 10, 255, cv2.THRESH_BINARY)[1]
-                cnts, hierarchy = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL,
+                major = cv2.__version__.split('.')[0]
+                if major == '3':
+                    _, cnts, hierarchy = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL,
+                                                   cv2.CHAIN_APPROX_SIMPLE)
+                else:
+                    cnts, hierarchy = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL,
                                                    cv2.CHAIN_APPROX_SIMPLE)
 
                 try:
